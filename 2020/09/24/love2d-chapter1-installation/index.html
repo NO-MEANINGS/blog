@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>love2d-chapter1-installation - Dahuang&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="第一章-安装
+第二章和第三章的内容不需要你安装任何东西。如果你不想马上安装一些软件，你可以使用repl.it作为替代。但是请务必阅读还有一些事情这一部分。
+
+安装LÖVE访问love2d.org。
+,"> 
+    <meta name="author" content="Dahuang"> 
+    <link rel="alternative" href="atom.xml" title="Dahuang&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dahuang&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://dahuang.xyz"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">love2d-chapter1-installation</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">love2d-chapter1-installation</h1>
+        <div class="stuff">
+            <span>九月 24, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/love2d/" rel="tag">love2d</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="第一章-安装"><a href="#第一章-安装" class="headerlink" title="第一章-安装"></a>第一章-安装</h1><hr>
+<p><em>第二章和第三章的内容不需要你安装任何东西。如果你不想马上安装一些软件，你可以使用<a href="repl.it">repl.it</a>作为替代。但是请务必阅读<strong>还有一些事情</strong>这一部分。</em></p>
+<hr>
+<h2 id="安装LOVE"><a href="#安装LOVE" class="headerlink" title="安装LÖVE"></a>安装LÖVE</h2><p>访问<a href="love2d.org">love2d.org</a>。</p>
+<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>根据你的系统类型选择64-bit installer或是32-bit installer。如果你实在不知道应该选哪个，就选32位的。（译注：除非你的电脑真的很古董，大部分情况下你都应该选择64位的版本。原作者建议你选择32位是因为64位处理器兼容32位的程序。但是我建议你先下载64位的试试看，如果你的系统是32位的，它会报错，这时你再换32位）  </p>
+<img src="/2020/09/24/love2d-chapter1-installation/download_love.png" class="">  
+<p>双击运行你下载的安装包。点<em>Next</em>，然后<em>I agree</em>。现在你可以选择love2d的安装位置。这不重要，但是鉴于以后我们以后会用到它，所以请记住这个位置。你安装love2d的文件夹会被叫做安装文件夹（Installation Folder）。<br>我的安装文件夹是<code>C:/Program Files/LOVE</code>。<br>点<em>Next</em>，<em>I agree</em>。安装会很快完成，完成后点击<em>Finish</em>。  </p>
+<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><h4 id="openSUSE-SLE"><a href="#openSUSE-SLE" class="headerlink" title="openSUSE/SLE"></a>openSUSE/SLE</h4><p>openSUSE的官方源里提供了love2d，而且版本也是比较新的，所以直接安装就好了。<br><code># zypper install love</code></p>
+<h4 id="Debian"><a href="#Debian" class="headerlink" title="Debian"></a>Debian</h4><p>Debian的官方源里提供了love2d，但是版本往往比较旧，不介意的话，可以直接安装。<br><code># apt install love</code></p>
+<h4 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h4><p>love2d官方提供了PPA。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># add-apt-repository ppa:bartbes&#x2F;love-stable</span><br><span class="line"># apt-get update</span><br></pre></td></tr></table></figure>
+<h4 id="其他发行版"><a href="#其他发行版" class="headerlink" title="其他发行版"></a>其他发行版</h4><p>love2d提供了官方的appimage，直接在官网上下载就好了。你也可以看看你的发行版有没有在官方源里提供love的包，或者自己编译。</p>
+<hr>
+<h2 id="安装ZeroBrane-Studio"><a href="#安装ZeroBrane-Studio" class="headerlink" title="安装ZeroBrane Studio"></a>安装ZeroBrane Studio</h2><h3 id="windows-1"><a href="#windows-1" class="headerlink" title="windows"></a>windows</h3><p>现在我们来安装一个文本编辑器。在这个教程中我们将使用ZeroBrane Studio。<br>访问<a target="_blank" rel="noopener" href="https://studio.zerobrane.com/">https://studio.zerobrane.com/</a>，然后点击下载。  </p>
+<img src="/2020/09/24/love2d-chapter1-installation/download_brane.png" class="">  
+<p>然后你可以选择捐助ZeroBrane Studio的开发者。不捐也是可以的，直接点击<em>Take me to the download page this time</em>。<br>运行安装包，然后把ZeroBrane Stdio安装到你喜欢的地方。</p>
+<img src="/2020/09/24/love2d-chapter1-installation/install_brane.png" class="">    
+<p>安装完成后，打开ZeroBrane Stdio。  </p>
+<h3 id="linux-1"><a href="#linux-1" class="headerlink" title="linux"></a>linux</h3><h4 id="openSUSE-SLE-1"><a href="#openSUSE-SLE-1" class="headerlink" title="openSUSE/SLE"></a>openSUSE/SLE</h4><p><code># zypper install zerobranestudio</code></p>
+<h4 id="其他发行版-1"><a href="#其他发行版-1" class="headerlink" title="其他发行版"></a>其他发行版</h4><p>官网上提供了shell archive（这是啥？），可以像windows的安装包那样安装。</p>
+<hr>
+<h2 id="写一个“Hello-World-“吧！"><a href="#写一个“Hello-World-“吧！" class="headerlink" title="写一个“Hello World!“吧！"></a>写一个“Hello World!“吧！</h2><p>首先需要创建一个项目文件夹。在你喜欢的地方创建一个文件夹并且起一个你喜欢的名字。（不要起中文名字，而且整个路径都要避免中文，否则容易出问题。）然后在ZeroBrane Studio里点击”Select Project Folder”按钮，然后选择你刚刚创建的那个文件夹。  </p>
+<img src="/2020/09/24/love2d-chapter1-installation/project_brane.png" class="">  
+<p>在ZeroBrane Studio里新建一个文件。<code>File</code>-&gt; <code>New</code>，或者使用快捷键<code>Ctrl + N</code>。<br>然后在这个文件里，输入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function love.draw()</span><br><span class="line">    love.graphics.print(&quot;Hello World!&quot;, 100, 100)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>保存文件，<code>File</code> -&gt; <code>Save</code>或者使用快捷键<code>Ctrl + S</code>，把这个文件命名为<code>main.lua</code>。<br>然后在菜单栏中找到<code>Project</code> -&gt; <code>Lua Interpreter</code>，然后选择<code>LÖVE</code>。<br>现在按下F6，应该会出现一个窗口，显示“Hello World!”。恭喜你！这是你的第一个love2d程序。现在你已经准备好学习love2d了。当我说运行游戏或者运行代码，按下F6来运行love2d。<br>什么也没有发生？你应该是把love2d安装到了一个你制定的位置而不是默认位置。找到<code>Edit</code> -&gt; <code>Preferrences</code> -&gt; <code>Settings: User</code>，然后在用户配置文件中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path.love2d &#x3D; &#39;C:&#x2F;path&#x2F;to&#x2F;love.exe&#39;</span><br></pre></td></tr></table></figure>
+<p>记得把<code>C:/path/to/love.exe</code>换成你安装love的位置。确保你使用了正斜杠（/）（而不是windows的反斜杠\）。</p>
+<hr>
+<h2 id="还有一些事情"><a href="#还有一些事情" class="headerlink" title="还有一些事情"></a>还有一些事情</h2><p>你是不是复制粘贴了样例代码？我建议你最好自己输入。这样虽然麻烦，但是有利于你学得更好。<br>代码中的注释不需要你自己输入。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 这是一行注释。这不是代码。</span><br><span class="line">-- 下一行才是代码：</span><br><span class="line"></span><br><span class="line">print(123)</span><br><span class="line"></span><br><span class="line">--输出：123</span><br></pre></td></tr></table></figure>
+<p>在lua中（love2d使用的编程语言是lua），用两个减号（–）开头的一行是注释。计算机在执行程序时会忽略注释，这意味这我们可以在里面输入任何东西而不会发生错误。注释可以提高代码的可读性。<br>通过<code>print()</code>，我们可以将括号里的信息发送到输出控制台。输出控制台是编辑器下面的那个框。当你关闭你的游戏时，输出控制台应该会显示123。不要把<code>print()</code>和<code>love.graphics.print()</code>混淆了。<br>如果你把下面的代码放在main.lua的顶部，你就可以立即看到要输出的内容。你不需要了解这其中的原理是什么。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io.stdout:setvbuf(&quot;no&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="其他文本编辑器"><a href="#其他文本编辑器" class="headerlink" title="其他文本编辑器"></a>其他文本编辑器</h2><p>如果你不想使用ZeroBrane Studio（其实这因该是一个IDE），你也可以使用其他的文本编辑器。<br>（理论上用windows自带的那个记事本也是可行的…但是你真的要用那东西写代码吗！？）  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://love2d.org/wiki/Atom">Atom</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+<li><a target="_blank" rel="noopener" href="https://love2d.org/wiki/Sublime_Text">Sublime Text</a></li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">第一章-安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85LOVE"><span class="toc-number">1.1.</span> <span class="toc-text">安装LÖVE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows"><span class="toc-number">1.1.1.</span> <span class="toc-text">windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux"><span class="toc-number">1.1.2.</span> <span class="toc-text">linux</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#openSUSE-SLE"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">openSUSE&#x2F;SLE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Debian"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">Debian</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ubuntu"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">ubuntu</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8F%91%E8%A1%8C%E7%89%88"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">其他发行版</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85ZeroBrane-Studio"><span class="toc-number">1.2.</span> <span class="toc-text">安装ZeroBrane Studio</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">linux</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#openSUSE-SLE-1"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">openSUSE&#x2F;SLE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8F%91%E8%A1%8C%E7%89%88-1"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">其他发行版</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E2%80%9CHello-World-%E2%80%9C%E5%90%A7%EF%BC%81"><span class="toc-number">1.3.</span> <span class="toc-text">写一个“Hello World!“吧！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%98%E6%9C%89%E4%B8%80%E4%BA%9B%E4%BA%8B%E6%83%85"><span class="toc-number">1.4.</span> <span class="toc-text">还有一些事情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">1.5.</span> <span class="toc-text">其他文本编辑器</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
