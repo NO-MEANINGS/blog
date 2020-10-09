@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>love2d-chapter2-variables - Dahuang&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="第二章-变量我们可以用编程语言做算术题。3 + 4等于几？显然是7！下面我们用程序来验证一下。我们可以使用print()让数字出现在输出控制台上。  
+12print(3 + 4)--output:,"> 
+    <meta name="author" content="Dahuang"> 
+    <link rel="alternative" href="atom.xml" title="Dahuang&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dahuang&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://dahuang.xyz"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">love2d-chapter2-variables</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">love2d-chapter2-variables</h1>
+        <div class="stuff">
+            <span>九月 26, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/love2d/" rel="tag">love2d</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="第二章-变量"><a href="#第二章-变量" class="headerlink" title="第二章-变量"></a>第二章-变量</h1><p>我们可以用编程语言做算术题。<br>3 + 4等于几？<br>显然是7！<br>下面我们用程序来验证一下。我们可以使用<code>print()</code>让数字出现在输出控制台上。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(3 + 4)</span><br><span class="line">--output: 7</span><br></pre></td></tr></table></figure>
+<p>运行你的代码（按下F6然后关掉出现的窗口来显示输出），然后你的控制台应该输出7。<br>好极了！那么<code>a + b</code>等于几？<br>Uhm…<br><code>a + b</code>可能等于任何数字，因为它们的值是不确定的。如果我们人为地赋予它们值，我们让：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 5</span><br><span class="line">b &#x3D; 3</span><br></pre></td></tr></table></figure>
+<p>现在<code>a + b</code>等于几？显然是8。我们来验证一下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 5</span><br><span class="line">b &#x3D; 3</span><br><span class="line">print(a + b)</span><br><span class="line">--output: 8</span><br></pre></td></tr></table></figure>
+<p>我们把<code>a</code>和<code>b</code>叫做变量。你可以这样理解变量：一个变量就是一个小盒子，你可以在盒子里放东西。与3，7这些固定的值不同，变量可以装下任何你想要的东西（你可以为它赋任何你想要的值）。<br>我们把<code>a = 5</code>这样的语句叫做赋值语句，赋值语句完成对一个变量的赋值。我们把<code>=</code>叫做赋值符号。<br>注意<code>=</code>是赋值符号而不是等号，<code>=</code>的含义是“求右边式子的值，并把这个值赋给左边的变量”，而不是“左右两边的值相等”。<br>除了加，我们还可以做其他的运算。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 20 - 10 --减法</span><br><span class="line">b &#x3D; 20 * 10 --乘法</span><br><span class="line">c &#x3D; 20 &#x2F; 10 --除法</span><br><span class="line">d &#x3D; 20 ^ 10 --乘方</span><br></pre></td></tr></table></figure>
+<p>你也可以为变量赋非整数值。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 10.4</span><br><span class="line">b &#x3D; 2.63</span><br><span class="line">c &#x3D; 0.1</span><br><span class="line">pi &#x3D; 3.141592</span><br></pre></td></tr></table></figure>
+<p>看下面的代码：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X &#x3D; 5</span><br><span class="line">Y &#x3D; 3</span><br><span class="line">Z &#x3D; X + Y</span><br><span class="line">X &#x3D; 2</span><br><span class="line">Y &#x3D; 40</span><br><span class="line">print(Z)</span><br></pre></td></tr></table></figure>
+<p>先自己思考一下，想想最后程序应该输出什么。然后试着运行这段代码，看看结果和你想的是否一样。<br>下面我们来分析这段代码。第一行是<code>X = 5</code>，这是一个<strong>赋值语句</strong>，我们把5赋给变量<code>X</code>。同理，变量<code>y</code>被赋予值3。到了第三行，注意我前面说的:</p>
+<blockquote>
+<p><code>=</code>的含义是“求右边式子的值，并把这个值赋给左边的变量”</p>
+</blockquote>
+<p>所以，第一步，计算机会先计算右边的<code>x + y</code>的值。由于<code>x</code>、<code>y</code>都是变量，于是计算机检查<code>x</code>、<code>y</code>分别等于多少。检查的结果是X=5，Y=3。所以计算机把X=5，Y=3代入<code>x + y</code>，计算出<code>x + y</code>的值为8。第一步到这里就算完成了。<br>接着是第二步，计算机把上一步计算出的值，8，赋给左边的变量<code>z</code>。<br><code>z</code>的值就这样被确定下来了，等于8。除非你再次给<code>z</code>赋值，<code>z</code>的值将不会变化。所以即使我们在第4、5行改变了<code>x</code>、<code>y</code>的值，<code>z</code>的值并没有改变。最后我们用<code>print()</code>输出<code>z</code>的值。所以，输出应该是8。  </p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>变量的“值”不仅仅可以是一个数值。变量的“值”还可以是字符串。<br><code>text = &quot;Hello World!&quot;</code><br>我们把”Hello World!”这样的东西叫做<strong>字符串</strong>，顾名思义，字符串就是一串字符。<br>我们可以用两个点（<code>..</code>）来连接字符串。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name &#x3D; “Daniel”</span><br><span class="line">age &#x3D; “25”</span><br><span class="line">text &#x3D; “Hello, my name is “ .. name .. “, and I’m “ .. age .. “ years old.”</span><br><span class="line">print(text)</span><br><span class="line">–Output: “Hello, my name is Daniel, and I’m 25 years old.”</span><br></pre></td></tr></table></figure>
+<h2 id="变量的命名规则"><a href="#变量的命名规则" class="headerlink" title="变量的命名规则"></a>变量的命名规则</h2><p>变量的名字不是随便取的，它有一些规则需要你遵守。  </p>
+<ul>
+<li>变量名应该仅由大小写字母，数字，和下划线（_）组成。这意味着特殊字符（诸如 @#$%^&amp;*.），汉字等等都是不被允许的。</li>
+<li>变量名是大小写敏感的。下面是三个不同的变量。它们的值分别是3，10，200。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sheep &#x3D; 3</span><br><span class="line">SHEEP &#x3D; 10</span><br><span class="line">sHeEp &#x3D; 200</span><br></pre></td></tr></table></figure></li>
+<li>你的变量名可以包含数字，但不能在开头。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test8 –这是对的</span><br><span class="line">te8st –这也是对的</span><br><span class="line">8test –这是错的</span><br></pre></td></tr></table></figure></li>
+<li>最后，你的变量名不可以是<strong>保留字</strong>(也叫关键字)。保留字在编程语言中有着特殊的含义和作用。love2d使用lua语言，下面是一份lua的保留字列表。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">and    break  do   else     elseif while</span><br><span class="line">end    false  for  function if</span><br><span class="line">in     local  nil  not      or</span><br><span class="line">repeat return then true     until  </span><br></pre></td></tr></table></figure>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2>你可能好奇这有什么用。实际上，变量的用途太多以至于没有变量你什么也干不了:)<br>举个例子吧。你可以用变量来追踪事物的变化。比如，你可以用一个叫coins的变量来表示玩家当前拥有的金币数量，每当玩家拾起一枚金币，你可以coins = coins +1。<br>（觉得coins = coins +1有问题？我理解，coins当然不等于(coins+1)。但是别忘了，在编程里，=是赋值符号而不是等号。仔细想想看！这是初学者很容易犯的一个错误）   <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>我们可以用变量储存像是数字或是字符串这样的值。变量的命名时大小写敏感的，且你不能使用特殊符号，也不能使用保留字。  </li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">第二章-变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.1.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.2.</span> <span class="toc-text">变量的命名规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%80%94"><span class="toc-number">1.3.</span> <span class="toc-text">用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

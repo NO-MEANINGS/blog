@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>love2d-chapter3-functions - Dahuang&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="第三章-函数我们可以用函数储存一段代码，这样我们就可以在需要时执行这段代码。函数也称为方法。有两个办法来创建函数：
+123example &amp;#x3D; function ()    print(&amp;q,"> 
+    <meta name="author" content="Dahuang"> 
+    <link rel="alternative" href="atom.xml" title="Dahuang&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dahuang&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://dahuang.xyz"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">love2d-chapter3-functions</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">love2d-chapter3-functions</h1>
+        <div class="stuff">
+            <span>十月 02, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/love2d/" rel="tag">love2d</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="第三章-函数"><a href="#第三章-函数" class="headerlink" title="第三章-函数"></a>第三章-函数</h1><p>我们可以用函数储存一段代码，这样我们就可以在需要时执行这段代码。函数也称为方法。<br>有两个办法来创建函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">example &#x3D; function ()</span><br><span class="line">    print(&quot;Hello World!&quot;)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>以及更常见的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function example()</span><br><span class="line">    print(&quot;Hello World!&quot;)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>要创建函数，用保留字<code>function</code>开头，后面跟着函数名。在lua中，函数是“一等公民”，或者说函数也是一种变量。这意味了很多事情，但是在目前，你只要知道，这意味着变量的命名原则同样适用于函数。上面的例子里的函数名为<code>example</code>。在函数名的后面要加上一对括号<code>()</code>（注意是半角括号）。现在我们可以开始编写函数内容了——也就是你想要这个函数储存的那段代码。在本例中，我们放进去了<code>print(&quot;Hello World!&quot;)</code>。编写完成后，我们用保留字<code>end</code>表示函数结束。<br>但是，当你执行上面的代码时，你将不会看到”Hellow World!”出现在你的控制台里。这是因为我们只是创建了这个函数，而没有执行它。我们像这样执行一个函数：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">example()</span><br><span class="line">--输出：&quot;Hello World!&quot;</span><br></pre></td></tr></table></figure>
+<p>你只要输入一个函数名，跟着一对括号，这样你就执行了一个函数，我们把这个叫做函数调用。  </p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>看看下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function sayNumber(num)</span><br><span class="line">    print(&quot;I like the number &quot; .. num)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">sayNumber(15)</span><br><span class="line">sayNumber(2)</span><br><span class="line">sayNumber(44)</span><br><span class="line">sayNumber(100)</span><br><span class="line">print(num)</span><br><span class="line">--Output:</span><br><span class="line">--&quot;I like the number 15&quot;</span><br><span class="line">--&quot;I like the number 2&quot;</span><br><span class="line">--&quot;I like the number 44&quot;</span><br><span class="line">--&quot;I like the number 100&quot;</span><br><span class="line">--nil</span><br></pre></td></tr></table></figure>
+<p>在括号里我们可以加入参数。参数是一种只存在于函数内的零时变量。这本例中，参数是<code>num</code>。我们可以像使用其他变量一样使用<code>num</code>。<br>我们多次调用了这个函数，每次传递了不同的参数。然后你会看到每次输出的都是同一个句子，但是数字不同。我们把放到括号里的那个数字叫做实参,想对应的，我们把创建函数时的那个<code>num</code>叫做形参。你可以把形参理解为仅在函数内部有效的一个变量，当具体的函数调用发生时，实参的值被赋给形参。<br>在末尾我们试图让程序输出<code>sayNumber</code>函数的形参——<code>num</code>的值。结果程序输出了<code>nil</code>。这意味着<code>num</code>没有任何值，或者说，<code>num</code>不存在。正如之前说的，形参只在函数内部有效。</p>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>函数可以返回值。我们可以用变量储存函数返回的值。你可以在函数里用return返回值。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function giveMeFive()</span><br><span class="line">    return 5</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">a &#x3D; giveMeFive()</span><br><span class="line">print(a)</span><br><span class="line">--Output: 5</span><br></pre></td></tr></table></figure>
+<p><code>a</code>存储了<code>giveMeFive()</code>返回的值。<br>来看另一个例子：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- 多个参数用逗号（半角逗号）分隔</span><br><span class="line">function sum(a, b)</span><br><span class="line">    return a + b</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">print(sum(200, 95))</span><br><span class="line">--Output:</span><br><span class="line">--295</span><br></pre></td></tr></table></figure>
+<p><code>sum()</code>函数返回<code>a</code>和<code>b</code>的和的值。我们不需要把函数返回的值先用一个变量存储起来。我们可以直接打印返回的值。  </p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>在实际工作中，你会希望在不同的地方运行同样的代码。有了函数，我们就可以通过函数调用的方式来运行这些代码，而不是每次都要复制粘贴。有时你可能还想要修改这些代码的行为。有了函数，我们只需要修改一次（在函数创建的地方）。我们用函数来实现代码复用。<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don’t repeat yourself</a>，这是一个编程准则。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">第三章-函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">1.2.</span> <span class="toc-text">返回值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%80%94"><span class="toc-number">1.3.</span> <span class="toc-text">用途</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
