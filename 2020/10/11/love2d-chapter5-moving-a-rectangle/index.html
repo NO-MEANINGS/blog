@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>love2d-chapter5-moving a rectangle - Dahuang&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Chapter 5 - Moving a rectangle现在我们可以开始有趣的部分了。我们将要让东西动起来。让我们从三个主回调函数开始。
+1234567891011function love.l,"> 
+    <meta name="author" content="Dahuang"> 
+    <link rel="alternative" href="atom.xml" title="Dahuang&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dahuang&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://dahuang.xyz"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">love2d-chapter5-moving a rectangle</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">love2d-chapter5-moving a rectangle</h1>
+        <div class="stuff">
+            <span>十月 11, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/love2d/" rel="tag">love2d</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Chapter-5-Moving-a-rectangle"><a href="#Chapter-5-Moving-a-rectangle" class="headerlink" title="Chapter 5 - Moving a rectangle"></a>Chapter 5 - Moving a rectangle</h1><p>现在我们可以开始有趣的部分了。我们将要让东西动起来。<br>让我们从三个主回调函数开始。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function love.update()</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function love.draw()</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>现在，我们来绘制一个矩形。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function love.draw()</span><br><span class="line">    love.graphics.rectangle(&quot;line&quot;, 100, 50, 200, 150)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<img src="/2020/10/11/love2d-chapter5-moving-a-rectangle/rectangle.png" class="" title="This is an example image">   
+<p>这个函数的第二个和第三个参数是x和y位置。<br>x是屏幕上的水平位置。0是屏幕的左侧。<br>y是屏幕上的垂直位置，0是屏幕右侧。</p>
+<img src="/2020/10/11/love2d-chapter5-moving-a-rectangle/coordinates.png" class="" title="This is an example image">   
+<p>现在我们希望让矩形动起来。是时候像一个程序员一样思考了。到底要做什么才能让矩形移动到右边？x坐标需要增加，100，101，102······但是我们不能让100变成101，100就是100。我们需要一个能够随时变成任何数字的东西···对了，变量！<br>在<code>love.load()</code>中，创建一个新的变量<code>x</code>，然后把<code>love.graphics.rectangle()</code>中的100换成<code>x</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    x &#x3D; 100 </span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function love.draw()</span><br><span class="line">    love.graphics.rectangle(&quot;line&quot;, x, 50, 200, 150)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>这样矩形的x坐标就是变量<code>x</code>的值了。<br>注意”x”只是一个变量名。我们可以用<code>fuck</code>或是<code>ass</code>或者随便什么来代替它。函数不关心变量名，它只在意变量的值。<br>现在我们要让矩形动起来。我们在<code>love.update()</code>里实现。每次更新（update）我们让x增加5。换言之，x需要被赋予x+5的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function love.update()</span><br><span class="line">    x &#x3D; x + 5</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>这样一来，<code>x</code>会不断增加5。运行游戏，矩形应该动起来了。    </p>
+<h2 id="Delta-time"><a href="#Delta-time" class="headerlink" title="Delta time"></a>Delta time</h2><p>我们已经让一个矩形动起来了，但是还有一个小问题。当你在不同的设备上运行你的游戏，矩形移动的速读可能不同，因为不同的设备不太可能以同样的频率执行<code>love.update()</code>。<br>举个例子：假设计算机A以100fps运行，而计算机B以200fps运行。<br>100 x 5 = 500<br>200 x 5 = 1000<br>所以在1秒内，x在计算机A上将增加500，而在B上将增加1000。<br>（这里可能不是很容易理解。还记得第四章里有关love的工作方式的描述吗？首先love会调用<code>love.load()</code>，然后进入一个<code>love.update()</code> -&gt; <code>love.draw()</code>的循环。love每调用一次<code>love.draw()</code>，画面就会更新一次，也就是1帧。如果现在有一台很慢的古董电脑，这台电脑一秒钟只能完成一次<code>love.update()</code> -&gt; <code>love.draw()</code>的循环，那么每秒钟<code>x</code>将只增加5。与之对应的是一台超级计算机，每秒钟可以完成上亿次这样的循环···显然，超级计算机上的矩形将会跑得飞快，而古董老爷机上的矩形慢吞吞。）<br>好在，有一个办法可以解决这个问题——delta time。<br>当love调用<code>love.update()</code>时，你可以传给它一个参数——<code>dt</code>。我们来试着输出<code>dt</code>的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function love.update(dt)</span><br><span class="line">    print(dt)</span><br><span class="line">    x &#x3D; x + 5</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p><code>dt</code>的值是从上次调用<code>love.update()</code>到这次调用的时间，以秒为单位。所以在100fps的计算机A上，<code>dt</code>的值是0.01，而在200fps的计算机B上，<code>dt</code>的值为0.005。<br>所以在1秒钟内，计算机A更新了100次，我们让<code>x</code>每次更新时增加5*0.01；计算机B更新了200次，我们让<code>x</code>每次增加5*0.005。<br>100 x 5 * 0.01  = 5<br>200 x 5 * 0.005 = 5<br>这样，通过<code>dt</code>，我们让矩形在所有的计算机上跑得一样快。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function love.update(dt)</span><br><span class="line">    x &#x3D; x + 5 * dt</span><br></pre></td></tr></table></figure>
+<p>现在矩形每秒种将会移动5个像素，而且在所有计算机上都是如此。你可以试着把5改成100，让矩形跑得更快。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们通过在每次更新（<code>love.update()</code>）时改变矩形的座标使矩形移动。<code>dt</code>是一个变量，它的值等于是从上次调用<code>love.update()</code>到这次调用的时间。我们用<code>dt</code>让矩形的移动速度在不同的设备上保持一致。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-5-Moving-a-rectangle"><span class="toc-number">1.</span> <span class="toc-text">Chapter 5 - Moving a rectangle</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Delta-time"><span class="toc-number">1.1.</span> <span class="toc-text">Delta time</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
