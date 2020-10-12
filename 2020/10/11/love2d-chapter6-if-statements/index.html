@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>love2d-chapter6-if-statements - Dahuang&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="第六章-if语句
+这一章节里我们将会继续使用上一章的代码
+
+通过if语句，我们可以让一个代码片段只在满足特定条件时执行。if语句的语法是这样的：
+123if condition then    --,"> 
+    <meta name="author" content="Dahuang"> 
+    <link rel="alternative" href="atom.xml" title="Dahuang&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dahuang&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://dahuang.xyz"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">love2d-chapter6-if-statements</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">love2d-chapter6-if-statements</h1>
+        <div class="stuff">
+            <span>十月 11, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/love2d/" rel="tag">love2d</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="第六章-if语句"><a href="#第六章-if语句" class="headerlink" title="第六章-if语句"></a>第六章-if语句</h1><hr>
+<p><em>这一章节里我们将会继续使用上一章的代码</em></p>
+<hr>
+<p>通过if语句，我们可以让一个代码片段只在满足特定条件时执行。<br>if语句的语法是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if condition then</span><br><span class="line">    -- code</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>condition就是那个“条件”，condition必须是真，或是假。<br>举个例子：<code>5 &gt; 9</code>。<br><code>&gt;</code>就是“大于”的意思，所以这里“条件”就是“5大于9”，显然，这为假。<br>我们把增加<code>x</code>的值的代码放进if语句里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function love.update(dt)</span><br><span class="line">    if 5 &gt; 9 then</span><br><span class="line">        x &#x3D; x + 100 * dt</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>当你运行游戏，你会发现矩形根本不动，因为“5大于9”为假。如果我们把条件换成<code>5 &lt; 9</code>，矩形就动起来来了，因为“5小于9”为真。<br>再来一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function love.update(dt)</span><br><span class="line">    if x &lt; 600 then</span><br><span class="line">        x &#x3D; x + 100 * dt</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<img src="/2020/10/11/love2d-chapter6-if-statements/rectangle_stop.gif" class="">
+<p>我们通过把<code>x &lt; 600</code>作为条件，另矩形最多运动到x=600处，然后就停下。<br>还记得我曾经强调<code>=</code>是赋值符号，不是等号吗？那么如果我们希望判断两个值是否相等，怎么办？我们用<code>==</code>，两个连在一起的赋值符号表示等号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x  &#x3D; 10 --把10的值赋给x</span><br><span class="line">x &#x3D;&#x3D; 10 --比较x和10是否相等</span><br></pre></td></tr></table></figure>
+<p>我们还用<code>&gt;=</code>和<code>&lt;=</code>来判断“大于或等于”和“小于或等于”。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 9 &lt;&#x3D; 10 --真，9&lt;10</span><br><span class="line">10 &lt;&#x3D; 10 --真，10&#x3D;&#x3D;10</span><br><span class="line">15 &gt;&#x3D; 4  --真，15&gt;4</span><br></pre></td></tr></table></figure>
+<p>我们用<code>~=</code>来判断“不等于”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4 ~&#x3D; 5 --真</span><br><span class="line">5 ~&#x3D; 5 --假</span><br></pre></td></tr></table></figure>
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>变量除了可以是数值、字符串，还可以是<strong>布尔值</strong>——<code>true</code>（真）和<code>false</code>（假）。我们用布尔值表示真和假。<br>我们新建一个变量<code>move</code>，并且为其赋值<code>true</code>，然后在if语句中检查<code>move</code>是否为真。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    x &#x3D; 100</span><br><span class="line">    move &#x3D; true</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function love.update(dt)</span><br><span class="line">    -- Remember, 2 equal signs!</span><br><span class="line">    if move &#x3D;&#x3D; true then</span><br><span class="line">        x &#x3D; x + 100 * dt</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p><code>move</code>为真，所以我们的矩形动了。但是<code>move == true</code>这样的写法实在是啰嗦。我们可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if move then</span><br><span class="line">    x &#x3D; x + 100 * dt</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>如果我们希望检查move是否为假，我们可以用<code>not</code>（非）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if not move then  --非（not）真为假，非假为真</span><br><span class="line">    x &#x3D; x + 100 * dt</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>如果我们在if语句内部改变了move的值，这将不会影响if语句的执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if move then</span><br><span class="line">    move &#x3D; false</span><br><span class="line">    print(&quot;This will still be executed!&quot;)</span><br><span class="line">    x &#x3D; x + 100 * dt</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h2 id="方向键"><a href="#方向键" class="headerlink" title="方向键"></a>方向键</h2><p>下面我们将会令矩形的移动跟随方向键的指示。我们将会使用一个新的函数：<code>love.keyboard.isDown</code>。顾名思义，这个函数检查键盘上的某个按键是否被按下。查阅<a target="_blank" rel="noopener" href="https://www.love2d.org/wiki/love.keyboard.isDown">wiki</a>，确实如此。<br>注意Down的D是大写。这是一种叫做“驼峰命名法”的命名风格。第一个单词的首字母用小写，接下来所有单词的首字母用大写。这不是强制的，但这是一个好习惯，因为这么做可以增加程序的可读性。（当然你也可以选择其他的办法，比如下划线）这也是本教程使用的命名风格。<br>我们将字符串<code>“right”</code>作为参数来检查右方向键是否被按下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if love.keyboard.isDown(&quot;right&quot;) then</span><br><span class="line">    x &#x3D; x + 100 * dt</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>这样矩形就只会在我们按下右方向键时移动了。  </p>
+<img src="/2020/10/11/love2d-chapter6-if-statements/rectangle_right.gif" class="">
+<p>我们还可以用<code>else</code>来告诉我们的游戏当条件为假是应该做什么。让我们令矩形在右方向键没有被按下时向左移动。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if love.keyboard.isDown(&quot;right&quot;) then</span><br><span class="line">    x &#x3D; x + 100 * dt</span><br><span class="line">else</span><br><span class="line">    x &#x3D; x - 100 * dt --We decrease the value of x</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>在一个语句为false后，<code>elseif</code>可以用来检查另一个语句是否为真。下面我们将会检查右方向键是否被按下，如果不，再检查左方向键是否被按下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if love.keyboard.isDown(&quot;right&quot;) then</span><br><span class="line">    x &#x3D; x + 100 * dt</span><br><span class="line">elseif love.keyboard.isDown(&quot;left&quot;) then</span><br><span class="line">    x &#x3D; x - 100 * dt</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>试着自己实现让矩形上下移动的功能吧！</p>
+<h2 id="and与or"><a href="#and与or" class="headerlink" title="and与or"></a>and与or</h2><p><code>and</code>，且，用<code>and</code>连接的多个表达式必须都为真，整体才为真，否则为假。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if 5 &lt; 9 and 14 &gt; 7 then</span><br><span class="line">    print(&quot;Both statements are true&quot;) </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p><code>or</code>，或，用<code>or</code>连接的多个表达式只要其中一个为真，整体就为真。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if 20 &lt; 9 or 14 &gt; 7 or 5 &#x3D;&#x3D; 10 then</span><br><span class="line">    print(&quot;One of these statements is true&quot;)</span><br><span class="line">end</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">## 多说一句</span><br><span class="line">准确起见，在lua中，除了&#96;false&#96;，&#96;nil&#96;也会被判定为假。除了&#96;false&#96;和&#96;nil&#96;，其他的所有值，即使不是&#96;true&#96;，都会被判定为真。</span><br></pre></td></tr></table></figure>
+<p>if true then print(1) end<br>if false then print(2) end<br>if nil then print(3) end –nil会被判定为假<br>if 5 then print(4) end –既不是false也不是nil，所以为真<br>if “hello” then print(5) end –既不是false也不是nil，所以为真<br>–Output: 1, 4, 5</p>
+<pre><code>##总结
+通过`if`语句，我们可以让代码段仅在满足条件时才执行。变量可以为`true`或`false`。这种类型的变量就是`布尔值`。当语句为假时，我们可以还使用else告诉游戏要执行什么，或者也可以可以使用`elseif`进行其他检查。</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-if%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.</span> <span class="toc-text">第六章-if语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E5%80%BC"><span class="toc-number">1.1.</span> <span class="toc-text">布尔值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E5%90%91%E9%94%AE"><span class="toc-number">1.2.</span> <span class="toc-text">方向键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#and%E4%B8%8Eor"><span class="toc-number">1.3.</span> <span class="toc-text">and与or</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
