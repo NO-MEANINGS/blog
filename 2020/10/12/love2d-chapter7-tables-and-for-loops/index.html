@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>love2d-chapter7-tables-and-for-loops - Dahuang&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="第七章-表和for循环我们可以在表里储存一组变量。我们用一对花括号（{}）来创建表。  
+123function love.load()    fruits &amp;#x3D; &amp;#123;&amp;#125;e,"> 
+    <meta name="author" content="Dahuang"> 
+    <link rel="alternative" href="atom.xml" title="Dahuang&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dahuang&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://dahuang.xyz"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">love2d-chapter7-tables-and-for-loops</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">love2d-chapter7-tables-and-for-loops</h1>
+        <div class="stuff">
+            <span>十月 12, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/love2d/" rel="tag">love2d</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>第七章-表和for循环<br>我们可以在<strong>表</strong>里储存一组变量。<br>我们用一对花括号（{}）来创建表。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    fruits &#x3D; &#123;&#125;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>这样，我们就创建了一个叫<code>fruit</code>的表。现在我们可以往里面储存值了。要往表里储存值，有许多方法。<br>其中一种办法是在创建表时，在花括号里加入值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    -- 不同的值间用逗号分开</span><br><span class="line">    fruits &#x3D; &#123;&quot;apple&quot;, &quot;banana&quot;&#125;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>或者使用函数<code>table.insert</code>。第一个参数是表的名字，第二个参数是你希望储存的值。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    --Each value is separated by a comma, just like with parameters and arguments</span><br><span class="line">    fruits &#x3D; &#123;&quot;apple&quot;, &quot;banana&quot;&#125;</span><br><span class="line">    table.insert(fruits, &quot;pear&quot;)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>现在，当<code>love.load()</code>结束后，我们的表里应该包括了“apple”，“banana”和“pear”。为了证明这一点，我们将他们打印到屏幕上。我们将使用函数<code>love.graphics.print(text, x, y)</code>。第一个参数text是你要打印的内容，后两个x、y是你希望打印的位置。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function love.draw()</span><br><span class="line">    --Arguments: (text, x-position, y-position)</span><br><span class="line">    love.graphics.print(&quot;Test&quot;, 100, 100)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>当你运行游戏，你应该看到“Test”出现在你的游戏窗口里。那么怎么打印表里的内容呢？要访问表中的内容，我们用表的名字加上一对方括号（[]），在方括号里，我们加入要访问的值的位置。  </p>
+<img src="/2020/10/12/love2d-chapter7-tables-and-for-loops/table.png" class="">  
+<p>就像我说的，表是一个值的列表。我们首先加入了<code>“apple”</code>和<code>&quot;banana&quot;</code>，所以它们分别在表的第一和第二个位置上。接下来我们增加了<code>“pear”</code>，所以它是第三个。第四个位置上还没有值，所以是<code>nil</code>。<br>所以如果我们希望打印<code>“apple”</code>，我们就要访问表中的第一个值。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function love.draw()</span><br><span class="line">    love.graphics.print(fruits[1], 100, 100)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>现在运行游戏，窗口中应该绘制了<code>“apple”</code>，如果你把<code>[1]</code>换成<code>[2]</code>，那么就是<code>&quot;banana&quot;</code>，<code>[3]</code>就是<code>“pear”</code>。<br>现在我们要打印所有表中的全部3个水果。你当然可以使用三次<code>love.graphics.print</code>…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function love.draw()</span><br><span class="line">    love.graphics.print(fruits[1], 100, 100)</span><br><span class="line">    love.graphics.print(fruits[2], 100, 200)</span><br><span class="line">    love.graphics.print(fruits[3], 100, 300)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>但是如果表里有100个值怎么办？用100次<code>love.graphics.print</code>？万幸的是，我们不必这么做——我们可以使用——</p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><p>for循环是一种让一段代码重复运行多次的办法。<br>要创建一个for循环，你可以这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    fruits &#x3D; &#123;&quot;apple&quot;, &quot;banana&quot;&#125;</span><br><span class="line">    table.insert(fruits, &quot;pear&quot;)</span><br><span class="line"></span><br><span class="line">    for i&#x3D;1,10 do</span><br><span class="line">        print(&quot;hello&quot;, i)</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>如果你运行游戏，控制台上就应该会输出：hello 1，hello 2，hello 3，直到hello 10。<br>要创建一个for循环，首先用保留字<code>for</code>开头。然后创建一个变量并且赋给它一个<strong>数</strong>值。这个变量可以用任何名字，但是通常我们用<code>i</code>。这个变量只能在for循环内部使用。然后用逗号，再跟上一个数值（我们设它为j）。每次循环结束，<code>i</code>的值都会+1，直到<code>i</code>的值达到j，循环结束。所以循环将会执行(j-i+1)次。<br>还有一个可选的第三个数字。<code>for i=6,18,4 do</code>意味着：从6开始，每次加4，直到18。你还可以这样：<code>for i=114514,1,-1</code>，意思是从114514开始，每次减1，直到1。<br>我们的表从1开始，里面一共有三个值，所以我们这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    fruits &#x3D; &#123;&quot;apple&quot;, &quot;banana&quot;&#125;</span><br><span class="line">    table.insert(fruits, &quot;pear&quot;)</span><br><span class="line"></span><br><span class="line">    for i&#x3D;1,3 do</span><br><span class="line">        print(fruits[i])</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>当你运行游戏，你将看到控制台输出了所有的3个水果。在第一个循环中，它打印<code>fruits[1]</code>，然后在第二个循环中打印<code>fruits[2]</code>，最后在第三个循环中打印<code>fruits[3]</code>。  </p>
+<h2 id="编辑表"><a href="#编辑表" class="headerlink" title="编辑表"></a>编辑表</h2><p>如果我们又往表中添加或者移除了一个值，怎么办？我们当然可以把3改成对应的数字。但是有更好的办法，我们可以用<code>#fruits</code>。<code>#</code>可以用来获取一个表的长度（也就是表中元素的数量）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    fruits &#x3D; &#123;&quot;apple&quot;, &quot;banana&quot;&#125;</span><br><span class="line"></span><br><span class="line">    print(#fruits)</span><br><span class="line">    --Output: 2</span><br><span class="line"></span><br><span class="line">    table.insert(fruits, &quot;pear&quot;)</span><br><span class="line"></span><br><span class="line">    print(#fruits)</span><br><span class="line">    --Output: 3</span><br><span class="line"></span><br><span class="line">    for i&#x3D;1,#fruits do</span><br><span class="line">        print(fruits[i])</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>现在我们将试着在游戏的窗口上绘制这三种水果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function love.draw()</span><br><span class="line">    for i&#x3D;1,#fruits do</span><br><span class="line">        love.graphics.print(fruits[i], 100, 100)</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>如果你运行游戏，你会发现确实绘制了3种水果，但是重叠在一起，我们可以这样修复这个问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function love.draw()</span><br><span class="line">    for i&#x3D;1,#fruits do</span><br><span class="line">        love.graphics.print(fruits[i], 100, 100 + 50 * i)</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>这样，<code>&quot;apple&quot;</code>将在y=100+50*1处绘制，<code>&quot;banana&quot;</code>在200，<code>“pear”</code>在250。</p>
+<img src="/2020/10/12/love2d-chapter7-tables-and-for-loops/fruits.png" class="">  
+<p>如果我们要添加其他水果，则无需进行任何更改。它将自动绘制。让我们添加<code>“pineapple”</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    fruits &#x3D; &#123;&quot;apple&quot;, &quot;banana&quot;&#125;</span><br><span class="line">    table.insert(fruits, &quot;pear&quot;)</span><br><span class="line">    table.insert(fruits, &quot;pineapple&quot;)</span><br><span class="line">    table.remove(fruits, 2)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>我们也可以从表中移除值，通过<code>table.remove</code>。第一个参数是我们希望从中移除元素的表的名字，第二个参数是我们希望移除的元素的位置。所以如果我们希望移除banana，我们这么做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    fruits &#x3D; &#123;&quot;apple&quot;, &quot;banana&quot;&#125;</span><br><span class="line">    table.insert(fruits, &quot;pear&quot;)</span><br><span class="line">    table.insert(fruits, &quot;pineapple&quot;)</span><br><span class="line">    table.remove(fruits, 2)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>现在当你运行游戏，banana不再会被绘制，并且pear和pinapple的位置会向前移动。</p>
+<img src="/2020/10/12/love2d-chapter7-tables-and-for-loops/shift.png" class="">
+<p>当你使用<code>table.remove</code>从表中移除元素时，所有在被移除元素之后的元素都会向前移动一个位置。所以原本在第3位的pear移动到了第2位。<br>你也可以改变已经存储在表中的值。举个例子，你可以吧apple改成tomato。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    fruits &#x3D; &#123;&quot;apple&quot;, &quot;banana&quot;&#125;</span><br><span class="line">    table.insert(fruits, &quot;pear&quot;)</span><br><span class="line">    table.insert(fruits, &quot;pineapple&quot;)</span><br><span class="line">    table.remove(fruits, 2)</span><br><span class="line">    --The value of position 1 in the table becomes &quot;tomato&quot;</span><br><span class="line">    fruits[1] &#x3D; &quot;tomato&quot;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h2 id="ipairs"><a href="#ipairs" class="headerlink" title="ipairs"></a>ipairs</h2><p>现在我们回到for循环。当你需要用循环遍历一个表时，有一个更简单的办法，那就是使用<code>ipairs</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    fruits &#x3D; &#123;&quot;apple&quot;, &quot;banana&quot;&#125;</span><br><span class="line">    table.insert(fruits, &quot;pear&quot;)</span><br><span class="line">    table.insert(fruits, &quot;pineapple&quot;)</span><br><span class="line">    table.remove(fruits, 2)</span><br><span class="line">    fruits[1] &#x3D; &quot;tomato&quot;</span><br><span class="line"></span><br><span class="line">    for i,v in ipairs(fruits) do</span><br><span class="line">        print(i, v)</span><br><span class="line">    end</span><br><span class="line">    --Output:</span><br><span class="line">    --1, &quot;tomato&quot;</span><br><span class="line">    --2, &quot;pear&quot;</span><br><span class="line">    --3, &quot;pineapple&quot;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>上面的这个for循环，我们也叫它<strong>迭代器</strong>。我们用迭代器来遍历一个表。变量<code>i</code>告诉我们我们现在在表中的位置，<code>v</code>是在该位置处的值。你可以认为<code>v</code>是<code>fruits[i]</code>的简便写法。举个例子，在第一次迭代中<code>i</code>的值为1，<code>v</code>的值为<code>&quot;apple&quot;</code>，而在第二次迭代中，<code>i</code>和<code>v</code>将分别是2和<code>“pear”</code>。<br>但是这究竟是这么工作的？<code>ipairs</code>函数的原理究竟是什么？不过那些都是另外一回事了。现在你只需要知道<code>ipairs</code>基本上是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i&#x3D;1, #fruits do</span><br><span class="line">    v &#x3D; fruits[i]</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>让我们用<code>ipairs</code>绘制表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function love.draw()</span><br><span class="line">    -- i and v are variables, so we can name them whatever we want</span><br><span class="line">    for i,frt in ipairs(fruits) do</span><br><span class="line">        love.graphics.print(frt, 100, 100 + 50 * i)</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>表是我们可以在其中存储值的列表。我们在创建表时使用<code>table.insert</code>或<code>table_name[1]=“some_value”</code>存储这些值。我们可以使用<code>#table_name</code>获取表的长度。使用<code>for</code>循环，我们可以多次重复一段代码。我们还可以使用<code>for</code>循环遍历表。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E8%A1%A8"><span class="toc-number">2.</span> <span class="toc-text">编辑表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ipairs"><span class="toc-number">3.</span> <span class="toc-text">ipairs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
