@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>love2d-chapter8-objects - Dahuang&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="第八章-对象在上一章中我们用数字给表里的元素编号，但实际上我们还有另外一种办法：用字符串。  
+12345function love.load()    --rect is short for re,"> 
+    <meta name="author" content="Dahuang"> 
+    <link rel="alternative" href="atom.xml" title="Dahuang&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dahuang&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://dahuang.xyz"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">love2d-chapter8-objects</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">love2d-chapter8-objects</h1>
+        <div class="stuff">
+            <span>十一月 26, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/love2d/" rel="tag">love2d</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="第八章-对象"><a href="#第八章-对象" class="headerlink" title="第八章-对象"></a>第八章-对象</h1><p>在上一章中我们用数字给表里的元素编号，但实际上我们还有另外一种办法：用字符串。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    --rect is short for rectangle</span><br><span class="line">    rect &#x3D; &#123;&#125;</span><br><span class="line">    rect[&quot;width&quot;] &#x3D; 100</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>在这里，我们把<code>&quot;width&quot;</code>叫做<strong>键</strong>，或是<strong>属性</strong>。所以现在表<code>rectangle</code>有了一个具有值为100的属性<code>&quot;width&quot;</code>。我们不需要每次创建属性时都使用字符串，我们可以用一个点（.）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    rect &#x3D; &#123;&#125;</span><br><span class="line">    -- 下面的两种写法作用是相同的</span><br><span class="line">    rect[&quot;width&quot;] &#x3D; 100</span><br><span class="line">    rect.width &#x3D; 100</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>让我们再多添加一些属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    rect &#x3D; &#123;&#125;</span><br><span class="line">    rect.x &#x3D; 100</span><br><span class="line">    rect.y &#x3D; 100</span><br><span class="line">    rect.width &#x3D; 70</span><br><span class="line">    rect.height &#x3D; 90</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>现在我们利用这些属性再画一次矩形：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function love.draw()</span><br><span class="line">    love.graphics.rectangle(&quot;line&quot;, rect.x, rect.y, rect.width, rect.height)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>然后再让这个矩形动起来！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    rect &#x3D; &#123;&#125;</span><br><span class="line">    rect.x &#x3D; 100</span><br><span class="line">    rect.y &#x3D; 100</span><br><span class="line">    rect.width &#x3D; 70</span><br><span class="line">    rect.height &#x3D; 90</span><br><span class="line"></span><br><span class="line">    --添加一个速度属性</span><br><span class="line">    rect.speed &#x3D; 100</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function love.update(dt)</span><br><span class="line">    -- 增加rect.x的值。别忘了delta time(dt)！</span><br><span class="line">    rect.x &#x3D; rect.x + rect.speed * dt</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>我们又一次让矩形动了起来，为了展现表的力量，我们下面将会创建多个移动的矩形。为此我们将会把表（table）当作list使用。把<code>love.load()</code>里的代码放到另一个新的函数里，然后在<code>love.load()</code>里创建一个表。</p>
+<figure class="highlight plain"><figcaption><span>love.load()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    -- Remember: camelCasing!</span><br><span class="line">    listOfRectangles &#x3D; &#123;&#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function createRect()</span><br><span class="line">    rect &#x3D; &#123;&#125;</span><br><span class="line">    rect.x &#x3D; 100</span><br><span class="line">    rect.y &#x3D; 100</span><br><span class="line">    rect.width &#x3D; 70</span><br><span class="line">    rect.height &#x3D; 90</span><br><span class="line">    rect.speed &#x3D; 100</span><br><span class="line"></span><br><span class="line">    -- Put the new rectangle in the list</span><br><span class="line">    table.insert(listOfRectangles, rect)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>这样，我们每次调用<code>creatRect</code>，一个新的矩形对象就会被添加到我们的list里，一个由表组成的表。现在我希望在我们按下空格键时调用<code>creatReat</code>。<code>love.keypressed</code>可以做到这一点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function love.keypressed(key)</span><br><span class="line">    -- Remember, 2 equal signs (&#x3D;&#x3D;) for comparing!</span><br><span class="line">    if key &#x3D;&#x3D; &quot;space&quot; then</span><br><span class="line">        createRect()</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>每当我们按下一个键，love都会调用<code>love.keypressed</code>，然后把按下的键作为参数传入。在上例中，如果按下的键是<code>“space”</code>，程序将会调用<code>creatRect</code>。<br>最后要做的就是修该update和draw函数。我们需要遍历<code>listOfRectangels</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function love.update(dt)</span><br><span class="line">    for i,v in ipairs(listOfRectangles) do</span><br><span class="line">        v.x &#x3D; v.x + v.speed * dt</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function love.draw(dt)</span><br><span class="line">    for i,v in ipairs(listOfRectangles) do</span><br><span class="line">        love.graphics.rectangle(&quot;line&quot;, v.x, v.y, v.width, v.height)</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h2 id="现在，当你运行游戏时，每当你按下空格，一个移动的矩形就应该出现在你眼前。"><a href="#现在，当你运行游戏时，每当你按下空格，一个移动的矩形就应该出现在你眼前。" class="headerlink" title="现在，当你运行游戏时，每当你按下空格，一个移动的矩形就应该出现在你眼前。"></a>现在，当你运行游戏时，每当你按下空格，一个移动的矩形就应该出现在你眼前。</h2><h2 id="再来一次？"><a href="#再来一次？" class="headerlink" title="再来一次？"></a>再来一次？</h2><p>这个章节很短，但是出现了非常多的代码。这可能让你感到很难理解本章的内容。所以我们再来把思路理一下。<br>在<code>love.load</code>里我们创建了一个表——<code>listOfRectangels</code>。<br>当我们按下键盘上的某个键，love就会调用<code>love.keypressed</code>，然后我们在<code>love.keypressed</code>里检查这个键是否是空格。如果是，调用<code>creatRect</code>。<br>在<code>creatRect</code>里我们创建了一个新表。我们赋予它诸如<code>x</code>和<code>y</code>这样的属性。然后我们把这些新表储存在<code>listOfRectangles</code>里。<br>在<code>love.update</code>和<code>love.draw</code>里，我们遍历这个由矩形组成的表来更新并绘制它们。  </p>
+<hr>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>一个对象也可以有他自己的函数。你可以像这样为一个对象创建函数：</p>
+<pre><code>tableName.functionName = function ()
+
+end
+
+-- Or the more common way
+function tableName.functionName()
+
+end</code></pre>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>表的索引既可以是值，也可以是字符串。我们称这类表为对象。（这么说有一些问题，但是目前这么理解就好了。想要更详细地了解请搜索<a target="_blank" rel="noopener" href="https://cn.bing.com/search?q=%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B&qs=n&form=QBLH&sp=-1&pq=%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B&sc=8-6&sk=&cvid=06F32D6A41C84B4E84E84FDC72D7BDDC"><em>面向对象编程</em></a>。)</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">第八章-对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E5%9C%A8%EF%BC%8C%E5%BD%93%E4%BD%A0%E8%BF%90%E8%A1%8C%E6%B8%B8%E6%88%8F%E6%97%B6%EF%BC%8C%E6%AF%8F%E5%BD%93%E4%BD%A0%E6%8C%89%E4%B8%8B%E7%A9%BA%E6%A0%BC%EF%BC%8C%E4%B8%80%E4%B8%AA%E7%A7%BB%E5%8A%A8%E7%9A%84%E7%9F%A9%E5%BD%A2%E5%B0%B1%E5%BA%94%E8%AF%A5%E5%87%BA%E7%8E%B0%E5%9C%A8%E4%BD%A0%E7%9C%BC%E5%89%8D%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">现在，当你运行游戏时，每当你按下空格，一个移动的矩形就应该出现在你眼前。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%8D%E6%9D%A5%E4%B8%80%E6%AC%A1%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">再来一次？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
