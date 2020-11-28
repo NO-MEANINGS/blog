@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>love2d-chapter9-multiple-files-and-scope - Dahuang&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="第九章-多文件和作用域多文件我们可以把代码分散在多个文件里来更好地组织它们。创建一个新文件并将其命名为example.lua，然后再创建一个main.lua，把它们放到同一个文件夹下。在exampl,"> 
+    <meta name="author" content="Dahuang"> 
+    <link rel="alternative" href="atom.xml" title="Dahuang&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dahuang&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://dahuang.xyz"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">love2d-chapter9-multiple-files-and-scope</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">love2d-chapter9-multiple-files-and-scope</h1>
+        <div class="stuff">
+            <span>十一月 28, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/love2d/" rel="tag">love2d</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="第九章-多文件和作用域"><a href="#第九章-多文件和作用域" class="headerlink" title="第九章-多文件和作用域"></a>第九章-多文件和作用域</h1><h2 id="多文件"><a href="#多文件" class="headerlink" title="多文件"></a>多文件</h2><p>我们可以把代码分散在多个文件里来更好地组织它们。创建一个新文件并将其命名为<code>example.lua</code>，然后再创建一个<code>main.lua</code>，把它们放到同一个文件夹下。<br>在<code>example.lua</code>里创建一个变量。在接下的示例代码的开头，我会加入额外的注释行（<code>--！ file:</code>）来明确这些代码应该放在哪个文件内。如果没有特别指出，那么这段代码要么是在main.lua里，要么是在之前提及的某个文件中。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--! file: example.lua</span><br><span class="line">test &#x3D; 20</span><br></pre></td></tr></table></figure>
+<p>然后在<code>main.lua</code>里输入<code>print(test)</code>。现在当你运行游戏，你因该看到输出<code>test</code>的结果是<code>nil</code>而不是20。这是因为我们必须先加载<code>example.lua</code>这个文件。要加载一个文件，我们使用<code>require</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--! file: main.lua</span><br><span class="line">--Leave out the .lua</span><br><span class="line">-- No need for love.load or whatever</span><br><span class="line">require(&quot;example&quot;)</span><br><span class="line">print(test)</span><br></pre></td></tr></table></figure>
+<p>我们不需要加上文件的拓展名“.lua”。<br>被加载的文件也可以在一个子目录里，但在这种情况下你需要给出相对目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--With require we use . instead of &#x2F;</span><br><span class="line">require(&quot;path.to.example&quot;)</span><br></pre></td></tr></table></figure>
+<p>现在当你试图输出<code>test</code>，你应该看到20。<br>在这种情况下，我们把<code>test</code>这样的变量叫做 <strong>全局变量</strong> ，我们可以在项目的任何地方使用它们。与全局变量相反的是 <strong>局部变量</strong> 。要创建一个局部变量，我们使用关键字<code>local</code>。你不必刻意创建一个全局变量，在lua里，除非你使用了<code>local</code>，所有变量都是全局变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--! file: example.lua</span><br><span class="line">local test &#x3D; 20</span><br></pre></td></tr></table></figure>
+
+<h2 id="这样，test就变成一个局部变量了。现在当你运行游戏，你因该又看到nil了。这是因为test的作用域变了。"><a href="#这样，test就变成一个局部变量了。现在当你运行游戏，你因该又看到nil了。这是因为test的作用域变了。" class="headerlink" title="这样，test就变成一个局部变量了。现在当你运行游戏，你因该又看到nil了。这是因为test的作用域变了。"></a>这样，<code>test</code>就变成一个局部变量了。现在当你运行游戏，你因该又看到<code>nil</code>了。这是因为<code>test</code>的<strong>作用域</strong>变了。</h2><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>变量只会在它们自己的作用域里生效。加上<code>local</code>后，<code>test</code>的作用域就变成了<code>example.lua</code>。也就是说，<code>test</code>这个变量只在<code>example.lua</code>里有效，在其他的文件里是无效的。<br>如果我们在一个<strong>代码块</strong>的内部创建了一个局部变量，比如在一个函数内，一个if语句内或是一个循环内，那么这个代码块就是这个局部变量的作用域。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">--! file: main.lua</span><br><span class="line">if true then</span><br><span class="line">    local test &#x3D; 20</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">print(test)</span><br><span class="line">--Output: nil</span><br></pre></td></tr></table></figure>
+<p>输出test的结果是<code>nil</code>，因为我们试图在它的作用域之外输出他。<br>函数的形参就像是局部变量一样，它们只存在在函数内部。<br>为了真正理解作用域是怎么工作的，请看下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--! file: main.lua</span><br><span class="line">test &#x3D; 10</span><br><span class="line">require(&quot;example&quot;)</span><br><span class="line">print(test)</span><br><span class="line">--Output: 10</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">--! file: example.lua</span><br><span class="line">local test &#x3D; 20</span><br><span class="line"></span><br><span class="line">function some_function(test)</span><br><span class="line">    if true then</span><br><span class="line">        local test &#x3D; 40</span><br><span class="line">        print(test)</span><br><span class="line">        --Output: 40</span><br><span class="line">    end</span><br><span class="line">    print(test)</span><br><span class="line">    --Output: 30</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">some_function(30)</span><br><span class="line"></span><br><span class="line">print(test)</span><br><span class="line">--Output: 20</span><br></pre></td></tr></table></figure>
+<p>如果你运行游戏，输出应该是：40，30，20，10。下面我们来分析一下这些代码。<br>首先我们在<code>main.lua</code>里创建了<code>test</code>，但在输出它之前，我们<code>require(&quot;example&quot;)</code>。<br>在<code>example.lua</code>里我们创建了一个局部变量<code>test</code>，尽管这个<code>test</code>和<code>main.lua</code>里的<code>test</code>有着相同的名字，但是它们是两个不同的变量。这也意味着我们给这个局部变量<code>test</code>的值不会影响到那个全局变量。<br>我们创建了一个叫<code>some_function(test)</code>的函数并且随后调用了它。<br>函数的形参<code>test</code>不会影响我们之前创建的那个局部变量<code>test</code>。<br>在if语句内我们创建了另一个叫<code>test</code>的局部变量，他不会影响到形参<code>test</code>。<br>第一个被执行的print在if语句里，输出了40。显然它输出的是if语句内的局部变量<code>test</code>。在if语句之后我们又输出了一次<code>test</code>，这次是30，这是我们传递给函数的参数。形参<code>test</code>不会被if语句内的局部变量<code>test</code>影响，if语句内的局部变量<code>test</code>只在if语句内有效，但在if语句内，局部变量<code>test</code>拥有比形参<code>test</code>更高的优先级。（也就是说，当你在if语句内部使用<code>test</code>时，lua会认为你是指if语句内的局部变量<code>test</code>，而不是形参<code>test</code>或是什么别的<code>test</code>）<br>然后在函数外我们又输出了一次<code>test</code>。这次是20。它输出的是在<code>example.lua</code>开头处创建的局部变量<code>test</code>，这个<code>test</code>不会被函数内的<code>test</code>影响。<br>最后我们在<code>main.lua</code>里又一次输出<code>test</code>。结果是10。全局变量<code>test</code>不会被<code>example.lua</code>里的那些局部变量<code>test</code>影响。<br>下图用颜色标注了每个test的作用域：</p>
+<img src="/2020/11/28/love2d-chapter9-multiple-files-and-scope/scope.png" class="">
+<blockquote>
+<p>注意，尽管上面的示例创建了多个同名的变量，但这并不意味着我们鼓励你在实际的项目中这么做，这么做只是为了让你理解作用域。事实上，你应该尽可能避免这样做，因为这很容易引起混乱。</p>
+</blockquote>
+<p>多说一句，当你创建一个局部变量时，你不必立刻为他赋值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local test</span><br><span class="line">test &#x3D; 20</span><br></pre></td></tr></table></figure>
+<h2 id="返回一个值"><a href="#返回一个值" class="headerlink" title="返回一个值"></a>返回一个值</h2><p>如果你在一个文件的顶级作用域里加入一个return语句（着意味着不是在某个函数里），那么当你用<code>require</code>加载这个文件时，<code>require</code>将返回它。<br>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--! file: example.lua</span><br><span class="line">local test &#x3D; 99</span><br><span class="line">return test</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--! file: main.lua</span><br><span class="line">local hello &#x3D; require &quot;example&quot;</span><br><span class="line">print(hello)</span><br><span class="line">--Ouput: 99</span><br></pre></td></tr></table></figure>
+<h2 id="什么时候需要使用局部变量？为什么要用局部变量？"><a href="#什么时候需要使用局部变量？为什么要用局部变量？" class="headerlink" title="什么时候需要使用局部变量？为什么要用局部变量？"></a>什么时候需要使用局部变量？为什么要用局部变量？</h2><p>你最好总是使用局部变量，这样做有几点原因。<br>第一点是lua访问局部变量快过全局变量。尽管差别不大，可能二者只相差了0.000001秒，但是如果你大量使用全局变量，这其中的差别会非常明显。<br>另一个原因是使用全局变量更容易出错。你可能在某处使用了一个变量a，然后你忘了它。于是你在接下来的某处把另一个变量也起名叫a。尽管你知道这两个a代表不同的东西，但计算机不知道。计算机会认为你首先创建了一个变量a，然后又该变了a的值。错误就这样产生了。如果一个变量只在某个地方用到，你最好使用局部变量。<br>在之前的章节里我们写了一个创建矩形的函数。把它找出来。在这个函数里我们就可以让<code>rect</code>变成局部变量，因为我们只在函数里用到它。<br>我们不把<code>listOfRectangles</code>变成局部变量，因为我们不止在<code>love.load</code>里用到它。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function love.load()</span><br><span class="line">    listOfRectangles &#x3D; &#123;&#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function createRect()</span><br><span class="line">    local rect &#x3D; &#123;&#125;</span><br><span class="line">    rect.x &#x3D; 100</span><br><span class="line">    rect.y &#x3D; 100</span><br><span class="line">    rect.width &#x3D; 70</span><br><span class="line">    rect.height &#x3D; 90</span><br><span class="line">    rect.speed &#x3D; 100</span><br><span class="line"></span><br><span class="line">    -- Put the new rectangle in the list</span><br><span class="line">    table.insert(listOfRectangles, rect)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>虽然我们不能把<code>listOfRectangles</code>变成<code>love.load</code>里的局部变量，但我们可以让他变成<code>main.lua</code>里的局部变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- By declaring it here we can access it everywhere in this file.</span><br><span class="line">local listOfRectangles &#x3D; &#123;&#125;</span><br><span class="line"></span><br><span class="line">function love.load()</span><br><span class="line">    -- It&#39;s empty so we could remove this function now</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>所以有没有推荐使用全局变量的时候呢？人们有着不同的看法。有的人会说永远不要使用全局变量。但是我觉得偶尔用一下也没什么，尤其是对于一个初学者而言，当你需要在多个文件里使用某个变量时。就像<code>love</code>也是一个全局变量一样。但是记住，局部变量更快。<br>注意尽管我在教程里使用了大量全局变量，但这只是为了方便——你不要这么做。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们用<code>require</code>加载文件。除非你创建的是一个局部变量，当你创建了一个变量，你就可以在所有文件里使用它（当然你要require）。局部变量不会影响到它们作用域外的同名变量。尽可能使用局部变量，因为它们更快，也更不容易出错。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E5%A4%9A%E6%96%87%E4%BB%B6%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.</span> <span class="toc-text">第九章-多文件和作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">多文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E6%A0%B7%EF%BC%8Ctest%E5%B0%B1%E5%8F%98%E6%88%90%E4%B8%80%E4%B8%AA%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E4%BA%86%E3%80%82%E7%8E%B0%E5%9C%A8%E5%BD%93%E4%BD%A0%E8%BF%90%E8%A1%8C%E6%B8%B8%E6%88%8F%EF%BC%8C%E4%BD%A0%E5%9B%A0%E8%AF%A5%E5%8F%88%E7%9C%8B%E5%88%B0nil%E4%BA%86%E3%80%82%E8%BF%99%E6%98%AF%E5%9B%A0%E4%B8%BAtest%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%98%E4%BA%86%E3%80%82"><span class="toc-number">1.2.</span> <span class="toc-text">这样，test就变成一个局部变量了。现在当你运行游戏，你因该又看到nil了。这是因为test的作用域变了。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.3.</span> <span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E5%80%BC"><span class="toc-number">1.4.</span> <span class="toc-text">返回一个值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">什么时候需要使用局部变量？为什么要用局部变量？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
